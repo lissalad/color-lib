@@ -1,6 +1,11 @@
+const colorNames = require("./webColors.json");
 
-function convert(color, code) {
-  switch(code) {
+function convert(color, input, output) {
+  switch(input) {
+    // if converting to same code
+    case output:
+      return color;
+    
     case "hex":
       console.log("hex!");
       break;
@@ -15,13 +20,14 @@ function convert(color, code) {
       break;
     case "name":
       console.log("name!");
+      console.log(convertNameToHex(color));
       break;
   }
 }
 
-// returns true if color is black
-function isBlack(str) {
-
+function convertNameToHex(color) {
+  const index = Object.keys(colorNames).indexOf(color);
+  return Object.values(colorNames)[index];
 }
 
-convert("","hex");
+convert("lightcoral", "name", "hex");
