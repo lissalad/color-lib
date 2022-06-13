@@ -1,7 +1,7 @@
 const colorNames = require("./webColors.json");
 
 function convert(color, input, output) {
-  let hex = initializeHex(color, input, output);
+  let hex;
 
   switch (input) {
     // return same if converting to same code
@@ -11,6 +11,7 @@ function convert(color, input, output) {
     // convert all to hex
     case "hex":
       console.log("input: hex!");
+      hex = color;
       break;
     case "rgb":
       console.log("input: rgb!");
@@ -47,11 +48,14 @@ function convert(color, input, output) {
 }
 
 // ------- convert ALL to hex --------------------------------- //
+
+// complete
 function convertNameToHex(color) {
   const index = Object.keys(colorNames).indexOf(color);
   return Object.values(colorNames)[index];
 }
 
+// in progress
 function convertRGBToHex(color) {}
 
 function convertHSLToHex(color) {}
@@ -60,13 +64,20 @@ function convertCYMKToHex(color) {}
 
 // ------- convert hex to desired code output --------------------- //
 
+// complete
 function convertHexToName(color) {
   const index = Object.values(colorNames).indexOf(color);
   return Object.keys(colorNames)[index];
 }
 
+// complete
 function convertHexToRGB(color) {
-  // incomplete
+  let rgb = [];
+  color.forEach((v) => {
+    rgb.push(parseInt(v, 16));
+  });
+
+  return rgb;
 }
 
 function convertHexToHSL(color) {
@@ -87,10 +98,11 @@ function initializeHex(color, input, output) {
 }
 
 // LISSA'S TESTS
-console.log(convert("#ff0000", "hex", "name"));
+// console.log(convert("#ff0000", "hex", "name"));
 // console.log(parseInt("C2", 16));
 // const str = "abcd";
 // const r = str.slice(0,2);
 // console.log(str);
 // console.log(convertHexToName("#8a2be2"));
 // console.log(convertNameToHex("red"));
+console.log(convertHexToRGB([44, 60, "c5"]));
