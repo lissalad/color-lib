@@ -64,7 +64,7 @@ function convertNameToHex(color) {
   return Object.values(colorNames)[index];
 }
 
-// in progress
+// complete
 function convertRGBToHex(color) { 
 
   const hex = color.map((v) => {
@@ -74,9 +74,18 @@ function convertRGBToHex(color) {
   return `#${hex.join("")}`;
 }
 
+// incomplete
 function convertHSLToHex(color) {}
 
-function convertCYMKToHex(color) {}
+// sorta complete
+function convertCYMKToHex(color) {
+  const black = 1 - color[3]/100;
+  const red = Math.round(255 * (1 - color[0]/100 ) * black);
+  const green = Math.round(255 * (1 - color[1]/100 ) * black);
+  const blue = Math.round(255 * (1 - color[2]/100 ) * black);
+
+  return convertRGBToHex([red, green, blue]);
+}
 
 // ------- convert hex to desired code output --------------------- //
 // complete
@@ -96,12 +105,12 @@ function convertHexToRGB(color) {
   return rgb;
 }
 
+// incomplete
 function convertHexToHSL(color) {
-  // incomplete
 }
 
+// incomplete
 function convertHexToCYMK(color) {
-  // incomplete
 }
 
 // ----------------- helpers ------------------------------ //
@@ -115,4 +124,5 @@ function initializeHex(color, input, output) {
 
 // LISSA'S TESTS
 
-console.log(convertRGBToHex([254, 227, 62]));
+console.log(convertCYMKToHex([58, 28, 0, 25]));
+// console.log(convertRGBToHex([80,137,191]));
