@@ -20,13 +20,14 @@ test('Main Converter', () => {
 // ------- convert TO hex ------------------ //
 test('Name to Hex', () => {
   expect(index.convertNameToHex("moccasin")).toBe("#ffe4b5");
-  // expect(index.convertNameToHex("THISTLE")).toBe("#dfb8df");
+  expect(index.convertNameToHex("THISTLE")).toBe("#d8bfd8");
   expect(index.convertNameToHex("gross")).toBe(null);
 })
 
 test('RGB to Hex', () => {
   expect(index.convertRGBToHex([49, 166, 94])).toBe("#31a65e");
   expect(index.convertRGBToHex([98, 63, 122, 45])).toBe(null);
+  expect(index.convertRGBToHex([0, 128, 128])).toBe("#008080");
   expect(index.convertRGBToHex("yep")).toBe(null);
   expect(index.convertRGBToHex(4)).toBe(null);
 })

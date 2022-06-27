@@ -7,9 +7,9 @@ function convert(color, input, output) {
   // convert all to hex
   switch (input) {
     // unless converting to same code
-    // TODO:  MAKE VALID !!!!!
+    // TODO:  MAKE VALID FIRST !!!!!
     case output:
-      console.log("requested output same type as input")
+      console.log("requested output same type as input");
       return color;
 
     case "hex":
@@ -51,7 +51,7 @@ function convertNameToHex(color) {
   color = validName(color);
 
   // check that name input is valid
-  if(!color){
+  if (!color) {
     console.log("invalid color name");
     return null;
   }
@@ -67,13 +67,18 @@ function convertRGBToHex(color) {
   color = validRGB(color);
 
   // check that rgb input is valid
-  if(!color){
+  if (!color) {
     console.log("invalid RGB value");
     return null;
   }
 
   const hex = color.map((v) => {
-    return v.toString(16);
+    const converted = v.toString(16);
+    // return 0 if first digit is 0
+    if (converted.length == 1) {
+      return "0" + converted;
+    }
+    return converted;
   });
 
   return `#${hex.join("")}`;
@@ -84,7 +89,7 @@ function convertHexToName(color) {
   color = validHex(color);
 
   // check that hex input is valid
-  if(!color){
+  if (!color) {
     console.log("invalid hex value");
     return null;
   }
@@ -98,7 +103,7 @@ function convertHexToRGB(color) {
   color = validHex(color);
 
   // check that hex input is valid
-  if(!color){
+  if (!color) {
     console.log("invalid hex value");
     return null;
   }
@@ -124,7 +129,7 @@ function validHex(color) {
     // if type is int, force string
     else {
       color = color.toString();
-      console.log(color)
+      console.log(color);
     }
   }
 
@@ -155,24 +160,23 @@ function validHex(color) {
 }
 
 function validRGB(color) {
-
   // check is array
-  if(!Array.isArray(color)) {
+  if (!Array.isArray(color)) {
     console.log("RGB must be an array");
     return null;
   }
 
   // check correct length
-  if(color.length !== 3) {
+  if (color.length !== 3) {
     console.log("RGB have exactly 3 values");
     return null;
   }
 
   // check values are between 0-255
-  for(let i=0; i<3; i+=1) {
+  for (let i = 0; i < 3; i += 1) {
     // force int
     color[i] = parseInt(color[i]);
-    if(color[i] < 0 || color[i] > 255) {
+    if (color[i] < 0 || color[i] > 255) {
       console.log("RGB values range from 0-255");
       return null;
     }
@@ -189,9 +193,9 @@ function validName(color) {
   }
 
   // make lowercase and remove any spaces
-  color = color.toLowerCase().replace(/\s/g, '');
+  color = color.toLowerCase().replace(/\s/g, "");
 
-  if(!Object.keys(colorNames).includes(color)) {
+  if (!Object.keys(colorNames).includes(color)) {
     console.log("named color does not exist");
     return null;
   }
@@ -208,5 +212,7 @@ module.exports = {
   convertHexToRGB,
   validHex,
   validRGB,
-  validName
+  validName,
 };
+
+console.log(convertRGBToHex([0,128,128]));
