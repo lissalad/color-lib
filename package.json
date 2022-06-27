@@ -1,8 +1,25 @@
 {
+  "name": "lissa-color-converter",
+  "version": "1.0.0",
+  "description": "color code coverter",
+  "main": "src/index.js",
+  "directories": {
+    "test": "tests"
+  },
   "devDependencies": {
     "jest": "^28.1.1"
   },
   "scripts": {
     "test": "jest"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lissalad/color-lib.git"
+  },
+  "author": "lissalad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lissalad/color-lib/issues"
+  },
+  "homepage": "https://github.com/lissalad/color-lib#readme"
 }

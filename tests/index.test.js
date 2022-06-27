@@ -7,8 +7,8 @@ test('Main Converter', () => {
   expect(index.convert("yuck", "name", "rgb")).toBe(null);
 
   expect(index.convert([218,112,214], "rgb", "name")).toBe("orchid");
-  expect(index.convert([192,192,192], "rgb", "hex")).toBe("#c0c0c0");
-  expect(index.convert([23,255,100], "rgb", "rgb")).toStrictEqual([23,255,100]);
+  expect(index.convert([192,192,192], "rgb", "HEx")).toBe("#c0c0c0");
+  expect(index.convert([23,255,100], "RGB", "rgb")).toStrictEqual([23,255,100]);
 
   expect(index.convert("#f8f8ff", "hex", "name")).toBe("ghostwhite");
   expect(index.convert("E85675", "hex", "name")).toBe(undefined);

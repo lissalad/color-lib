@@ -5,7 +5,7 @@ function convert(color, input, output) {
   let hex;
 
   // convert all to hex
-  switch (input) {
+  switch (input.toLowerCase()) {
     // unless converting to same code
     // TODO:  MAKE VALID FIRST !!!!!
     case output:
@@ -13,34 +13,29 @@ function convert(color, input, output) {
       return color;
 
     case "hex":
-      // console.log("input: hex!");
       hex = validHex(color);
       break;
 
     case "rgb":
-      // console.log("input: rgb!");
       hex = convertRGBToHex(color);
       break;
 
     case "name":
-      // console.log("input: name!");
       hex = convertNameToHex(color);
       break;
   }
 
   // convert hex to requested output and return value
-  switch (output) {
+  switch (output.toLowerCase()) {
     // unless hex IS requested output
     case "hex":
       return hex;
 
     case "rgb":
-      // console.log("output: rgb!");
       return convertHexToRGB(hex);
       break;
 
     case "name":
-      // console.log("output: name!");
       return convertHexToName(hex);
   }
 }
@@ -129,7 +124,6 @@ function validHex(color) {
     // if type is int, force string
     else {
       color = color.toString();
-      console.log(color);
     }
   }
 
@@ -215,4 +209,3 @@ module.exports = {
   validName,
 };
 
-console.log(convertRGBToHex([0,128,128]));
