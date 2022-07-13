@@ -1,6 +1,6 @@
 {
   "name": "lissa-color-converter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "color code coverter",
   "main": "src/index.js",
   "directories": {

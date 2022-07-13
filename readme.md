@@ -5,6 +5,11 @@ functions to convert color codes between web color name, hex code, and rgb value
 ## Installation
 `npm i lissa-color-convert`
 
+at the top of your file put:
+```ts
+ const lissaColor = require('lissa-color-convert');
+```
+
 ## Usage
 # convert()
 takes 3 paramaters: color code, the type of code input, and the type of code desired output  
@@ -17,17 +22,17 @@ valid input and output values:
 examples:  
 
 ```js
- convert([0, 206, 209], "rgb", "name");  
+ lissaColor.convert([0, 206, 209], "rgb", "name");  
   // returns "darkturquoise"
 ```
 
 ```js
- convert("ghostwhite", "name", "hex");  
+ lissaColor.("ghostwhite", "name", "hex");  
   // returns "#f8f8ff"
 ```
 
 ```js
- convert("#4b0082", "hex", "rgb");  
+ lissaColor.("#4b0082", "hex", "rgb");  
   // returns [75, 0, 130]
 ```
 
